@@ -57,3 +57,6 @@ bin/
 ### Iml ###
 jdbc-project.iml
 
+## db.properties ##
+db.properties
+
