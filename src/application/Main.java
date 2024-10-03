@@ -1,6 +1,8 @@
 package application;
 
 import db.DB;
+import model.dao.DaoFactory;
+import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
 
@@ -18,6 +20,8 @@ public class Main {
                 LocalDate.parse("19/02/1873",dateTimeFormatter),
                 3000.0,
                 department);
+
+        SellerDao sellerDao = DaoFactory.createSellerDao();
 
         System.out.println(department);
         System.out.println(seller);
