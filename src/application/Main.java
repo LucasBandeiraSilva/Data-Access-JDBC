@@ -5,11 +5,14 @@ import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
 public class Main {
     public static void main( String[] args ) {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
         System.out.println("=== TEST 1: seller findById ===");
@@ -22,9 +25,14 @@ public class Main {
         list.forEach(System.out::println);
 
         System.out.println("\n===TEST 3: seller findAll===");
-
         list = sellerDao.findAll();
         list.forEach(System.out::println);
+
+        System.out.println("\n===TEST 4: seller insert===");
+        Seller newSeller = new Seller(null,"Lucas Bandeira","lucas@gmail.com", LocalDate.parse("02/02/2003",timeFormatter),4000.0,department);
+        sellerDao.insert(newSeller);
+        System.out.println("Inserted! new id = " + newSeller.getId());
+
 
     }
 }
