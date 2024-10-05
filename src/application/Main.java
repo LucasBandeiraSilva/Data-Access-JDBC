@@ -8,11 +8,13 @@ import model.entities.Seller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Main {
     public static void main( String[] args ) {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        Scanner scanner = new Scanner(System.in);
 
         SellerDao sellerDao = DaoFactory.createSellerDao();
         System.out.println("=== TEST 1: seller findById ===");
@@ -38,6 +40,15 @@ public class Main {
         seller.setName("Bruce Wayne");
         sellerDao.update(seller);
         System.out.println("Update complete");
+
+        System.out.println("\n===TEST 6: seller delete===");
+        System.out.println("Enter id for delete: ");
+        int id = scanner.nextInt();
+        sellerDao.deleteById(id);
+        System.out.println("Delete completed");
+
+        scanner.close();
+
 
 
     }
